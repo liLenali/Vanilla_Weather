@@ -82,9 +82,10 @@ function imgClouds(clouds1) {
     "img/rain.png",
     "img/sun_cloud.png",
     "img/sun_rain_cloud.png",
-    "img/sun.png"
+    "img/sun.png",
+    "img/haze.png"
   );
-
+  //
   let imgC111 = document.getElementById("imgCloud");
   if (clouds1 === "Clouds") {
     imgC111.src = imgs[0];
@@ -94,6 +95,9 @@ function imgClouds(clouds1) {
   }
   if (clouds1 === "Clear") {
     imgC111.src = imgs[4];
+  }
+  if (clouds1 === "Haze") {
+    imgC111.src = imgs[5];
   }
 }
 
