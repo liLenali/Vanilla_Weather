@@ -8,8 +8,11 @@
 
 .card1 {
   display: block;
-  margin: 0 auto;
+  margin: 20px auto;
+  padding: 20px;
   background-color: white;
+  border: 1px solid #dadde1;
+  border-radius: 4px;
 }
 .card-bottom {
   background-color: white;
