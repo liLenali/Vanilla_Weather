@@ -1,0 +1,42 @@
+.city {
+  font-size: 60px;
+}
+
+.cel-far {
+  text-decoration: none;
+}
+
+.card1 {
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+}
+.card-bottom {
+  background-color: white;
+}
+.card-top {
+  background-color: white;
+}
+.card-grand {
+  background-color: white;
+}
+
+.card-center {
+  background-color: white;
+}
+.card-form {
+  background-color: white;
+}
+.search-button {
+  width: 10%;
+  min-width: min-content;
+  transition: all 200ms ease;
+  box-shadow: rgba(35, 36, 78, 0.2) 2px 4px 4px 0;
+}
+
+.current-button {
+  width: 10%;
+  min-width: min-content;
+  transition: all 200ms ease;
+  box-shadow: rgba(35, 36, 78, 0.2) 2px 4px 4px 0;
+}
