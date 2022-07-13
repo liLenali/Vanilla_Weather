@@ -194,7 +194,7 @@ function Prognoz(position) {
   let apiKeyP = "50e56fa212f8363db506fc2abece70d9";
   let latP = position.coords.latitude;
   let lonP = position.coords.longitude;
-  let apiUrlP = `http://api.openweathermap.org/data/2.5/forecast/?lat=${latP}&lon=${lonP}&units=metric&count=10&appid=${apiKeyP}`;
+  let apiUrlP = `https://api.openweathermap.org/data/2.5/forecast/?lat=${latP}&lon=${lonP}&units=metric&count=10&appid=${apiKeyP}`;
   //let apiUrlPP = `http://api.openweathermap.org/data/2.5/weather?lat=${latP}&lon=${lonP}&lang=en&units=metric&appid=${apiKey}`;
 
   axios.get(apiUrlP).then((res) => {
