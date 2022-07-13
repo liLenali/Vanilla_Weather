@@ -33,6 +33,12 @@ function getWeekDay(date) {
   return days[date.getDay()];
 }
 
+function getWeekDayShort(date) {
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function printDate(date) {
   var hours = date.getHours();
   if (hours < 10) {
@@ -71,12 +77,27 @@ function formatDate(timestamp) {
   document.getElementById("result_min").innerHTML = min;
 }
 
-//var temp; // обьявили глобальную переменную чтобы ее было видно из функции
+function formatDatePrognoz(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  let min = date.getMinutes();
+  if (min < 10) {
+    min = "0" + min;
+  }
+
+  let day = date.getDate();
+
+  let weekday = getWeekDayShort(date);
+  return weekday;
+}
 
 function searchCity(city) {
   var apiKey = "50e56fa212f8363db506fc2abece70d9";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&units=metric&appid=${apiKey}`;
-  //data1(currentTime);
+
   axios.get(apiUrl).then((res) => {
     console.log(res);
     console.log(res.data.main.temp);
@@ -183,6 +204,34 @@ function Prognoz(position) {
     console.log(res.data.list[1].weather[0].main);
     // эти данне надо пораспихивать в прогнозы выюрать с каким индексом будет подходящий день и час
     //
+    document.getElementById("temp-1").innerHTML =
+      Math.round(res.data.list[5].main.temp) + "°C";
+    document.getElementById("weekday-1").innerHTML = formatDatePrognoz(
+      res.data.list[5].dt * 1000
+    );
+
+    //
+    document.getElementById("temp-2").innerHTML =
+      Math.round(res.data.list[13].main.temp) + "°C";
+    document.getElementById("weekday-2").innerHTML = formatDatePrognoz(
+      res.data.list[13].dt * 1000
+    );
+    document.getElementById("temp-3").innerHTML =
+      Math.round(res.data.list[21].main.temp) + "°C";
+    document.getElementById("weekday-3").innerHTML = formatDatePrognoz(
+      res.data.list[21].dt * 1000
+    );
+    document.getElementById("temp-4").innerHTML =
+      Math.round(res.data.list[29].main.temp) + "°C";
+    document.getElementById("weekday-4").innerHTML = formatDatePrognoz(
+      res.data.list[29].dt * 1000
+    );
+    document.getElementById("temp-5").innerHTML =
+      Math.round(res.data.list[37].main.temp) + "°C";
+    document.getElementById("weekday-5").innerHTML = formatDatePrognoz(
+      res.data.list[37].dt * 1000
+    );
+
     /*let h1 = document.querySelector("h1");
    h1.innerHTML = Math.round(res.data.main.temp) + "°C";
    document.getElementById("result_humidity").innerHTML =
@@ -264,9 +313,10 @@ currentLocationButton.addEventListener("click", getCurrentLocation);
 
 console.log("*******************************");
 console.log("*******************************");
-var currentLocationButtonP = document.querySelector("#current-buttonP");
-currentLocationButtonP.addEventListener("click", getPrognoz);
+//var currentLocationButtonP = document.querySelector("#current-buttonP");
+//currentLocationButtonP.addEventListener("click", getPrognoz);
 console.log("*******************************");
-var currentLocationButtonP = document.querySelector("#current-buttonH");
-currentLocationButtonP.addEventListener("click", getHistory);
+//var currentLocationButtonP = document.querySelector("#current-buttonH");
+//currentLocationButtonP.addEventListener("click", getHistory);
 console.log("*******************************");
+getPrognoz();
