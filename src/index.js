@@ -100,10 +100,19 @@ function searchCity(city) {
 
   axios.get(apiUrl).then((res) => {
     console.log(res);
+    //
+    //
+
+    let temperatureElement = document.querySelector("h1");
+    celsiusTemperature = res.data.main.temp;
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+    //
+    //
     console.log(res.data.main.temp);
     console.log(res.data.wind.speed);
     let h1 = document.querySelector("h1");
-    h1.innerHTML = Math.round(res.data.main.temp) + "°C";
+    h1.innerHTML = Math.round(res.data.main.temp);
     document.getElementById("result_humidity").innerHTML =
       res.data.main.humidity;
     document.getElementById("result_wind").innerHTML =
@@ -122,7 +131,20 @@ function searchCity(city) {
     //imgClouds(clouds);
     console.log(res.data.dt * 1000);
     formatDate(res.data.dt * 1000);
+    //var celsiusTemperature = Math.round(res.data.main.temp);
+    // let fahrenheitLink = document.querySelector("#fahrenheit-link");
+    //fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+    //let celsiusLink = document.querySelector("#celsius-link");
+    //celsiusLink.addEventListener("click", displayCelsiusTemperature);
   });
+  //let celsiusTemperature = Math.round(res.data.main.temp);
+
+  //let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  //fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+  //let celsiusLink = document.querySelector("#celsius-link");
+  //celsiusLink.addEventListener("click", displayCelsiusTemperature);
 }
 
 function imgClouds(clouds1) {
@@ -175,8 +197,19 @@ function searchLocation(position) {
     console.log(res);
     console.log(res.data.main.temp);
     console.log(res.data.wind.speed);
+
+    //
+    //
+
+    let temperatureElement = document.querySelector("h1");
+    celsiusTemperature = res.data.main.temp;
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+    //
+    //
+
     let h1 = document.querySelector("h1");
-    h1.innerHTML = Math.round(res.data.main.temp) + "°C";
+    h1.innerHTML = Math.round(res.data.main.temp);
     document.getElementById("result_humidity").innerHTML =
       res.data.main.humidity;
     document.getElementById("result_wind").innerHTML =
@@ -274,18 +307,6 @@ function Prognoz(position) {
       "src",
       `http://openweathermap.org/img/wn/${res.data.list[39].weather[0].icon}@2x.png`
     );
-
-    /*let h1 = document.querySelector("h1");
-   h1.innerHTML = Math.round(res.data.main.temp) + "°C";
-   document.getElementById("result_humidity").innerHTML =
-     res.data.main.humidity;
-   document.getElementById("result_wind").innerHTML =
-     "Wind: " + res.data.wind.speed + "km/h";
-   document.getElementById("result_clouds").innerHTML =
-     res.data.weather[0].main;
-   document.getElementById("result_city").innerHTML = res.data.name;
-   let clouds = res.data.weather[0].main;
-   imgClouds(clouds);*/
   });
 }
 //******************************************************************** */
@@ -311,19 +332,6 @@ function HistoryP(position) {
     console.log(res);
     console.log(res);
     console.log(res);
-    // эти данне надо пораспихивать в прогнозы выюрать с каким индексом будет подходящий день и час
-    //
-    /*let h1 = document.querySelector("h1");
-   h1.innerHTML = Math.round(res.data.main.temp) + "°C";
-   document.getElementById("result_humidity").innerHTML =
-     res.data.main.humidity;
-   document.getElementById("result_wind").innerHTML =
-     "Wind: " + res.data.wind.speed + "km/h";
-   document.getElementById("result_clouds").innerHTML =
-     res.data.weather[0].main;
-   document.getElementById("result_city").innerHTML = res.data.name;
-   let clouds = res.data.weather[0].main;
-   imgClouds(clouds);*/
   });
 }
 //******************************************************************** */
@@ -343,6 +351,40 @@ function getCurrentLocation() {
   //event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("h1");
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("h1");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//**************************
+//********************** *
+
 //var dateElement = document.querySelector("#date");
 var currentTime = new Date();
 printDate(currentTime);
@@ -362,4 +404,5 @@ console.log("*******************************");
 //var currentLocationButtonP = document.querySelector("#current-buttonH");
 //currentLocationButtonP.addEventListener("click", getHistory);
 console.log("*******************************");
+searchCity("Odesa");
 getPrognoz();

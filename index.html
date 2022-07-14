@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="icon" type="image/png" href="img/LOGO_min.jpg" />
     <meta charset="UTF-8" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -14,7 +15,7 @@
       crossorigin="anonymous"
     />
 
-    <title>LiLena_HW_5</title>
+    <title>LiLena_HW_7</title>
   </head>
   <body>
     <div class="card1" style="width: 80%">
@@ -91,10 +92,15 @@
               <h1>
                 <span class="result_temp" id="result_temp"></span>
               </h1>
-              <h5>
+              <span class="units"
+                ><a href="#" id="celsius-link" class="active">°C</a> |
+                <a href="#" id="fahrenheit-link">°F</a></span
+              >
+
+              <!--<h5>
                 <a href="#" class="cel-far" id="celsius-link"></a>
                 <a href="#" class="cel-far" id="fahrenheit-link"></a>
-              </h5>
+              </h5>-->
             </div>
             <div class="col">
               Humidity: <span id="result_humidity"></span>%
