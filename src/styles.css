@@ -43,3 +43,11 @@
   transition: all 200ms ease;
   box-shadow: rgba(35, 36, 78, 0.2) 2px 4px 4px 0;
 }
+
+.text-start {
+  font-weight: bold;
+}
+
+.result_clouds {
+  text-transform: capitalize;
+}

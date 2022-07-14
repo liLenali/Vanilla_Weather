@@ -110,10 +110,16 @@ function searchCity(city) {
       "Wind: " + res.data.wind.speed + "km/h";
     document.getElementById("result_city").innerHTML = city;
     document.getElementById("result_clouds").innerHTML =
-      res.data.weather[0].main;
-    let clouds = res.data.weather[0].main;
+      res.data.weather[0].description;
+    let clouds = res.data.weather[0].description;
     console.log(clouds);
-    imgClouds(clouds);
+
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`
+    );
+    //imgClouds(clouds);
     console.log(res.data.dt * 1000);
     formatDate(res.data.dt * 1000);
   });
@@ -176,10 +182,16 @@ function searchLocation(position) {
     document.getElementById("result_wind").innerHTML =
       "Wind: " + res.data.wind.speed + "km/h";
     document.getElementById("result_clouds").innerHTML =
-      res.data.weather[0].main;
+      res.data.weather[0].description;
     document.getElementById("result_city").innerHTML = res.data.name;
-    let clouds = res.data.weather[0].main;
-    imgClouds(clouds);
+    let clouds = res.data.weather[0].description;
+    //imgClouds(clouds);
+
+    let iconElementL = document.querySelector("#icon");
+    iconElementL.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.weather[0].icon}@2x.png`
+    );
     formatDate(res.data.dt * 1000);
   });
 }
@@ -209,6 +221,11 @@ function Prognoz(position) {
     document.getElementById("weekday-1").innerHTML = formatDatePrognoz(
       res.data.list[9].dt * 1000
     );
+    let iconElement1 = document.querySelector("#icon-1");
+    iconElement1.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.list[9].weather[0].icon}@2x.png`
+    );
 
     //
     document.getElementById("temp-2").innerHTML =
@@ -216,20 +233,46 @@ function Prognoz(position) {
     document.getElementById("weekday-2").innerHTML = formatDatePrognoz(
       res.data.list[17].dt * 1000
     );
-    document.getElementById("temp-3").innerHTML =
-      Math.round(res.data.list[25].main.temp) + "°C";
-    document.getElementById("weekday-3").innerHTML = formatDatePrognoz(
-      res.data.list[25].dt * 1000
+    let iconElement2 = document.querySelector("#icon-2");
+    iconElement2.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.list[17].weather[0].icon}@2x.png`
     );
+    //
+
+    document.getElementById("temp-3").innerHTML =
+      Math.round(res.data.list[24].main.temp) + "°C";
+    document.getElementById("weekday-3").innerHTML = formatDatePrognoz(
+      res.data.list[24].dt * 1000
+    );
+    let iconElement3 = document.querySelector("#icon-3");
+    iconElement3.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.list[24].weather[0].icon}@2x.png`
+    );
+    //
+
     document.getElementById("temp-4").innerHTML =
       Math.round(res.data.list[33].main.temp) + "°C";
     document.getElementById("weekday-4").innerHTML = formatDatePrognoz(
       res.data.list[33].dt * 1000
     );
+    let iconElement4 = document.querySelector("#icon-4");
+    iconElement4.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.list[33].weather[0].icon}@2x.png`
+    );
+    //
+
     document.getElementById("temp-5").innerHTML =
       Math.round(res.data.list[39].main.temp) + "°C";
     document.getElementById("weekday-5").innerHTML = formatDatePrognoz(
       res.data.list[39].dt * 1000
+    );
+    let iconElement5 = document.querySelector("#icon-5");
+    iconElement5.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${res.data.list[39].weather[0].icon}@2x.png`
     );
 
     /*let h1 = document.querySelector("h1");
