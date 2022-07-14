@@ -205,31 +205,31 @@ function Prognoz(position) {
     // эти данне надо пораспихивать в прогнозы выюрать с каким индексом будет подходящий день и час
     //
     document.getElementById("temp-1").innerHTML =
-      Math.round(res.data.list[5].main.temp) + "°C";
+      Math.round(res.data.list[9].main.temp) + "°C";
     document.getElementById("weekday-1").innerHTML = formatDatePrognoz(
-      res.data.list[5].dt * 1000
+      res.data.list[9].dt * 1000
     );
 
     //
     document.getElementById("temp-2").innerHTML =
-      Math.round(res.data.list[13].main.temp) + "°C";
+      Math.round(res.data.list[17].main.temp) + "°C";
     document.getElementById("weekday-2").innerHTML = formatDatePrognoz(
-      res.data.list[13].dt * 1000
+      res.data.list[17].dt * 1000
     );
     document.getElementById("temp-3").innerHTML =
-      Math.round(res.data.list[21].main.temp) + "°C";
+      Math.round(res.data.list[25].main.temp) + "°C";
     document.getElementById("weekday-3").innerHTML = formatDatePrognoz(
-      res.data.list[21].dt * 1000
+      res.data.list[25].dt * 1000
     );
     document.getElementById("temp-4").innerHTML =
-      Math.round(res.data.list[29].main.temp) + "°C";
+      Math.round(res.data.list[33].main.temp) + "°C";
     document.getElementById("weekday-4").innerHTML = formatDatePrognoz(
-      res.data.list[29].dt * 1000
+      res.data.list[33].dt * 1000
     );
     document.getElementById("temp-5").innerHTML =
-      Math.round(res.data.list[37].main.temp) + "°C";
+      Math.round(res.data.list[39].main.temp) + "°C";
     document.getElementById("weekday-5").innerHTML = formatDatePrognoz(
-      res.data.list[37].dt * 1000
+      res.data.list[39].dt * 1000
     );
 
     /*let h1 = document.querySelector("h1");
