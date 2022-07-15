@@ -432,20 +432,40 @@ function getHistory() {
   navigator.geolocation.getCurrentPosition(HistoryP);
 }
 
-function HistoryP(position) {
+function HistoryP(coordinates) {
   let apiKeyP = "50e56fa212f8363db506fc2abece70d9";
-  let latP = position.coords.latitude;
-  let lonP = position.coords.longitude;
-  let dtP = 1586468027;
-  //let apiUrlP = `http://api.openweathermap.org/data/2.5/forecast/?lat=${latP}&lon=${lonP}&units=metric&count=10&appid=${apiKeyP}`;
-  //let apiUrlPP = `http://api.openweathermap.org/data/2.5/weather?lat=${latP}&lon=${lonP}&lang=en&units=metric&appid=${apiKey}`;
-  let apiUrlH = `https://api.openweathermap.org/data/2.5/timemachine?lat=${latP}&lon=${lonP}&dt=${dtP}&appid=${apiKeyP}`;
-  axios.get(apiUrlH).then((res) => {
-    console.log(res);
-    console.log(res);
-    console.log(res);
-    console.log(res);
+  console.log(coordinates);
+  console.log("HHHHHHHHHHHHHHHHHH__________History_____");
+
+  let apiUrl = `https://history.openweathermap.org/data/2.5/history/city?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&start=${start}&end=${end}&appid=${apiKey}`;
+  // это АПИ для прогноза
+  axios.get(apiUrl).then((res) => {
+    console.log(res.data); // здесь мы выводим наши данные откуда можно взять подневной и почасовой прогноз
+    console.log(res.data.daily); // выводим прогноз на 8 дней массив
+    console.log(res.data.daily[0].temp.max);
+    formatDateHistory(res.data.dt * 1000);
+    console.log("HHHHHHHHHHHHHHH");
   });
+  //
+}
+
+function formatDateHistory(timestamp) {
+  let date = new Date(timestamp);
+  /*let hours = date.getHours();
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  let min = date.getMinutes();
+  if (min < 10) {
+    min = "0" + min;
+  }*/
+  let year = date.getFullYear();
+  let month_1 = date.setMonth(d.getMonth() - 1);
+  let day = date.getDate();
+  let resultDate = "_++_ DATA _++_" + day + " " + year + " ";
+  //let weekday = getWeekDayShort(date);
+  //return resultDate;
+  console.log(resultDate);
 }
 //******************************************************************** */
 //******************************************************************** */
